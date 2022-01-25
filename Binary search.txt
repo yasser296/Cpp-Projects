@@ -1,0 +1,94 @@
+#include <iostream>
+using namespace std;
+#define size 100
+
+int main()
+{
+	int first , last , mid , a[size] ;
+	int n ;
+A:
+	cout << "enter the number that you want to find it :" << endl;
+	cin>>n;
+
+	int i  ;
+	for(i=0 ; i<size ; i++)
+		a[i]=1+i ;
+
+
+	first=0;
+	last=size-1;
+	mid=(first+last)/2 ;
+
+
+	cout<<"============================================================================\n";
+	cout<<" F || L || M || A.M || decision || \n";
+	Y:
+	cout<<" "<<first<<" "<<"||"<<last<<" "<<"||"<<mid<<" "<<" "<<" "<<"||"<<a[mid]<<" ";
+	if(n>a[mid]) cout<<"||"<<" "<<" "<<" "<<" "<<"first=mid+1 \n";
+	if(n<a[mid]) cout<<"||"<<" "<<" "<<" "<<" "<<"last=mid-1 \n";
+	if(n==a[mid])
+	{
+       cout<<"||"<<" "<<" "<<" "<<" "<<"found \n";
+	          cout<<"it found in : "<< mid <<endl<<endl;
+	           goto E ;
+	}
+
+	if(n>a[mid])
+		first=mid+1;
+	else
+		last=mid-1;
+
+	mid=(first+last)/2 ;
+
+
+
+	if(first>last)
+	{
+		cout<<" "<<first<<" "<<"||"<<last<<" "<<"||"<<mid<<" "<<" "<<" "<<"||"<<"There are not any no. here"<<"\n";
+		cout<<"it not found " ;
+	}
+	else
+		goto Y ;
+
+	char ans ;
+	   E :
+		cout<<"Are you want make it again ?\n";
+		cout<<"Choice Y to yes and N to no .\n";
+		cin>>ans;
+		switch(ans)
+		{
+		case 'Y' :cout<<"I am under your service .\n" ; goto A; break;
+		case 'N' :cout<<"Good by .\n" ;  break;
+
+		default:cout<<"There is something wrong ,please try again \n"; goto E ;
+		}
+
+
+	return 0;
+}
+
+
+
+
+
+
+
+//	int size ;
+//	int first , last , mid , a[size] ;
+//	int n ;
+
+//A:
+
+//	cout<<"Enter the size of array: \n";
+//	cin>> size ;
+//
+//	int i  ;
+//	cout<<"Enter the numbers in array a[size]: \n";
+//	for(i=0 ; i<size ; i++)
+//		{cin>>a[i] ;}
+//
+//	cout << "enter the number that you want to find it :" << endl;
+//	cin>>n;
+
+
+

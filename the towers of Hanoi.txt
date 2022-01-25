@@ -1,0 +1,59 @@
+//At the top level, we'll call MoveTower with num=number of disks
+// , source=A, auxiliary=B, and destination=C.
+
+#include <iostream>
+using namespace std;
+
+void towers(int num, char source, char auxiliary, char destination)
+{
+  if(num==1)
+    {
+       cout<<"\n Move disk 1 from "<<source<<" to "<<destination; //Base case 
+       return;
+    }
+       towers(num-1 , source , destination , auxiliary);
+       cout<<"\n\n move disk "<<num<<" from "<<source<<" to "<<destination;
+       towers(num-1 , auxiliary , source , destination);
+}
+
+int main()
+
+{
+    int num;
+    char ans;
+A:
+    cout<<"Enter the number of disks : ";
+    cin>>num;
+    cout<<endl<<endl<<"The sequence of moves involved in the Tower of Hanoi are :\n"<<endl;
+    towers( num ,'A', 'B', 'C');
+
+    E :
+ 	cout<<"\n\nAre you want make it again ?\n";
+ 	cout<<"\nChoice Y to yes and N to no .\n";
+ 	cin>>ans;
+ 	switch(ans)
+ 	{
+ 	case 'Y' :cout<<"\nI am under your service .\n" ; goto A; break;
+ 	case 'N' :cout<<"Good by .\n" ;  break;
+
+ 	default:cout<<"There is something wrong ,please try again \n"; goto E ;
+ 	}
+
+    return 0;
+}
+
+
+//MoveTower( 3 , A , B , C )
+//MoveTower( 2 , A , C , B )
+//MoveTower( 1 , A , B , C ) move disk 1 from A to C --->Base case
+
+//MoveTower( 2 , A , C , B ) move disk 2 from A to B
+//MoveTower( 1 , C , A , B ) move disk 1 from C to B --->Base case
+
+//MoveTower( 3 , A , B , C ) move disk 3 from A to C
+//MoveTower( 2 , B , A , C )
+//MoveTower( 1 , B , C , A ) move disk 1 from B to A --->Base case
+
+//MoveTower( 2 , B , A , C ) move disk 2 from B to C
+//MoveTower( 1 , A , B , C ) move disk 1 from A to C --->Base case
+

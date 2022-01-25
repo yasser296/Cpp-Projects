@@ -1,0 +1,319 @@
+#include <iostream.h>
+
+
+struct data
+{
+	int a[5][5] , b[5][5] , difference[5][5] , sum[5][5] , trans[5][5] ;
+	int r , c ; // r is the no. of rows ,c is the no. of columns
+        int i , j ; // i is the index of row ,j is the index of column
+        int r1 , c1 , r2 , c2 , q , e[5][5] ;
+};
+
+void transpose()
+{
+	data T ;
+    cout << "Enter no. of rows then no. of columns of matrix: \n";
+    cin >> T.r >> T.c;
+
+    // Storing element of matrix entered by user in array T.a[][].
+    cout << endl << "Enter elements of matrix: " << endl;
+    for(T.i = 0; T.i < T.r; ++T.i)
+    for(T.j = 0; T.j < T.c; ++T.j)
+    {
+        cout << "Enter elements T.a" <<" row no.: "<< T.i <<" column no.: "<< T.j << ": ";
+        cin >> T.a[T.i][T.j];
+    }
+
+    // Displaying the matrix T.a[][]
+    cout << endl << "Entered Matrix: " << endl;
+    for(T.i = 0; T.i < T.r; ++T.i)
+    for(T.j = 0; T.j < T.c; ++T.j)
+    {
+       cout << " " << T.a[T.i][T.j];
+       if(T.j == T.c - 1)
+       cout << endl << endl;
+    }
+
+    // Finding transpose of matrix T.a[][] and storing it in array T.trans[][].
+    for(T.i = 0; T.i < T.r; ++T.i)                                                                          
+    for(T.j = 0; T.j < T.c; ++T.j)                                                                        
+    {
+        T.trans[T.j][T.i]=T.a[T.i][T.j];  
+        // T.j in T.trans mean row and T.i in T.trans mean column       
+        // T.c++ make T.a T.trans. to metrics T.a[][] and save this until I ask this 
+
+        /**
+                 |  0  |  1
+        ---------|-----|-----
+               0 |  1  |  4
+               1 |  2  |  5
+               2 |  3  |  6
+        */
+    }
+
+    // Displaying the transpose,T.i.e, Displaying array T.trans[][].
+    cout << endl << "Transpose of Matrix: " << endl;
+    for(T.i = 0; T.i < T.c; ++T.i)
+    for(T.j = 0; T.j < T.r; ++T.j)
+    {
+       cout << " " << T.trans[T.i][T.j];
+       if(T.j == T.r - 1)
+       cout << endl << endl;
+    }
+
+}
+
+//=========================================================================================
+//=========================================================================================
+//=========================================================================================
+
+void sum()
+{
+	data S ;
+
+    cout << "Enter no. of rows then no. of columns of matrix: \n";
+    cin >> S.r >> S.c;
+
+    cout << endl << "Enter elements of 1st matrix: " << endl;
+
+    // Storing elements of first matrix entered by user.
+    for(S.i = 0; S.i < S.r; ++S.i)
+    for(S.j = 0; S.j < S.c; ++S.j)
+    {
+    	cout << "Enter elements T.a" <<" row no.: "<< S.i <<" column no.: "<< S.j << ": ";
+         cin >> S.a[S.i][S.j];
+    }
+
+    // Storing elements of second matrix entered by user.
+    cout << endl << "Enter elements of 2nd matrix: " << endl;
+    for(S.i = 0; S.i < S.r; ++S.i)
+    for(S.j = 0; S.j < S.c; ++S.j)
+    {
+    	cout << "Enter elements b" <<" row no.: "<< S.i <<" column no.: "<< S.j << ": ";
+         cin >> S.b[S.i][S.j];
+    }
+
+    // Adding Two matrices
+    for(S.i = 0; S.i < S.r; ++S.i)
+    for(S.j = 0; S.j < S.c; ++S.j)
+        S.sum[S.i][S.j] = S.a[S.i][S.j] + S.b[S.i][S.j];
+
+    // Displaying the resultant T.sum matrix.
+    cout << endl << "Sum of two matrix is: " << endl;
+//    for(i = 0; i < r; ++i)
+//        for(j = 0; j < c; ++j)
+//        {
+//            cout << sum[i][j] << "  ";
+//            if(j == c - 1)
+//                cout << endl;
+//        }
+
+       for ( S.i = 0 ; S.i < S.r ; S.i++ )
+       {
+          for (S.j = 0 ; S.j < S.c ; S.j++ )
+             cout << S.sum[S.i][S.j] << "\t";
+
+          cout << endl;
+       }
+
+
+}
+
+//=========================================================================================
+//=========================================================================================
+//=========================================================================================
+
+void difference()
+{
+	data D ;
+
+    cout << "Enter no. of rows then no. of columns of matrix: \n";
+    cin >> D.r >> D.c;
+
+    cout << endl << "Enter elements of 1st matrix: " << endl;
+
+    // Storing elements of first matrix entered by user.
+    for(D.i = 0; D.i < D.r; ++D.i)
+    for(D.j = 0; D.j < D.c; ++D.j)
+    {
+    	cout << "Enter elements T.a" <<" row no.: "<< D.i <<" column no.: "<< D.j << ": ";
+         cin >> D.a[D.i][D.j];
+    }
+
+    // Storing elements of second matrix entered by user.
+    cout << endl << "Enter elements of 2nd matrix: " << endl;
+    for(D.i = 0; D.i < D.r; ++D.i)
+    for(D.j = 0; D.j < D.c; ++D.j)
+    {
+    	cout << "Enter elements b" <<" row no.: "<< D.i <<" column no.: "<< D.j << ": ";
+         cin >> D.b[D.i][D.j];
+    }
+
+    // difference Two matrices
+    for(D.i = 0; D.i < D.r; ++D.i)
+    for(D.j = 0; D.j < D.c; ++D.j)
+          D.sum[D.i][D.j] = D.a[D.i][D.j] + D.b[D.i][D.j];
+
+    // Displaying the resultant T.difference matrix.
+    cout << endl << "difference of two matrix is: " << endl;
+//    for(i = 0; i < r; ++i)
+//        for(j = 0; j < c; ++j)
+//        {
+//            cout << difference[i][j] << "  ";
+//            if(j == c - 1)
+//                cout << endl;
+//        }
+
+       for ( D.i = 0 ; D.i < D.r ; D.i++ )
+       {
+          for (D.j = 0 ; D.j < D.c ; D.j++ )
+             cout << D.difference[D.i][D.j] << "\t";
+
+          cout << endl;
+       }
+
+
+}
+
+//=========================================================================================
+//=========================================================================================
+//=========================================================================================
+
+void multiplication()
+{
+	data M ;
+
+    A:
+	cout <<"If you want make multiplication to two matrices you must know that: \n
+    the no. of columns of the 1st matrix must equal to no. of rows of the 2nd matrix "<<endl<<endl;
+
+	 cout << "For 1st matrix ,Enter no. of rows then no. of columns of matrix: \n";
+	 cin >> M.r1 >> M.c1;
+	 cout<<endl<<endl;
+
+	 cout << "For 2nd matrix ,Enter no. of rows then no. of columns of matrix: \n";
+	 cin >> M.r2 >> M.c2;
+	 cout<<endl<<endl;
+
+	if(M.c1!=M.r2)
+	{	cout<<"I am sorry I can't do this ,because:\n"
+				"the no. of columns of the 1st matrix not equal to no. of rows of the 2nd matrix .\n \n";
+	goto A ;}
+
+	else
+	{
+	    cout << endl << "Enter elements of 1st matrix: "<<endl<<endl;
+	    for(M.i = 0; M.i < M.r1; ++M.i)
+	    for(M.j = 0; M.j < M.c1; ++M.j)
+	    {
+	    	cout << "Enter elements T.a" <<" row no.: "<< M.i <<" column no.: "<< M.j << ": ";
+	        cin >> M.a[M.i][M.j];
+	    }
+
+	    cout << endl << "Entered Matrix: " << endl;
+	    for(M.i = 0; M.i < M.r1; ++M.i)
+	    for(M.j = 0; M.j < M.c1; ++M.j)
+	    {
+	       cout << " " << M.a[M.i][M.j];
+	       if(M.j == M.c1 - 1)
+	       cout << endl << endl;
+	    }
+
+	    cout << endl << "Enter elements of 2nd matrix: "<<endl<<endl;
+	    for(M.i = 0; M.i < M.r2; ++M.i)
+	    for(M.j = 0; M.j < M.c2; ++M.j)
+	    {
+	    	cout << "Enter elements T.a" <<" row no.: "<< M.i <<" column no.: "<< M.j << ": ";
+	        cin >> M.b[M.i][M.j];
+	    }
+
+	    cout << endl << "Entered Matrix: " << endl;
+	    for(M.i = 0; M.i < M.r2; ++M.i)
+	   	for(M.j = 0; M.j < M.c2; ++M.j)
+	    {
+	       cout << " " << M.b[M.i][M.j];
+	       if(M.j == M.c2 - 1)
+	       cout << endl << endl;
+	    }
+
+	    for(M.i = 0; M.i < M.r1; ++M.i)
+	   	for(M.j = 0; M.j < M.c2; ++M.j)
+	   	{
+
+	   		M.e[M.i][M.j] = M.a[M.i][0]*M.b[0][M.j] ;
+
+            if(M.c1 > 1)
+			{
+            	for(M.q=1 ; M.q<M.c1 ; M.q++)
+			  {
+			    M.e[M.i][M.j]+=M.a[M.i][M.q]*M.b[M.q][M.j] ;
+			  }
+			}
+
+	   	}
+
+	    cout<<"The multiplication of tow metrics\n" ;
+	    cout<<"==================================\n" ;
+
+	    for(M.i = 0; M.i < M.r1; ++M.i)
+	    for(M.j = 0; M.j < M.c2; ++M.j)
+	    {
+	          cout << M.e[M.i][M.j] << "  ";
+	          if(M.j == M.c2 - 1)
+	          cout << endl;
+	    }
+
+
+	}
+
+}
+
+//=========================================================================================
+//=========================================================================================
+//=========================================================================================
+int main()
+{
+	char data , ans ;
+
+	cout<<"=====================================================================\n";
+	cout<<"=====================================================================\n";
+	cout<<"Hello I am c++ ,I will make transpose or sum or difference or 
+    multiplication to matrix ,as your request sir .\n\n";
+	A :
+	cout<<"enter (T) if you want transpose or (S) if you want sum or (D) 
+    if you want difference or (M) if you want multiplication : \n";
+	cin>> data;
+
+	switch(data)
+	{
+	case 'T' :cout<<"I am under your service .\n\n" ; transpose(); break;
+	case 'S' :cout<<"I am under your service .\n\n" ; sum(); break;
+	case 'D' :cout<<"I am under your service .\n\n" ; difference(); break;
+	case 'M' :cout<<"I am under your service .\n\n" ; multiplication(); break;
+	default:cout<<"There is something wrong ,please try again \n"; goto A ;
+	}
+
+   E :
+	cout<<"Are you want make it again ?\n";
+	cout<<"Choice Y to yes and N to no .\n";
+	cin>>ans;
+	switch(ans)
+	{
+	case 'Y' :cout<<"I am under your service .\n" ; goto A; break;
+	case 'N' :cout<<"Good by .\n" ;  break;
+
+	default:cout<<"There is something wrong ,please try again \n"; goto E ;
+	}
+
+//	if(data==1)
+//	transpose();
+//	if(data==2)
+//	sum() ;
+//	if(data==3)
+//	difference();
+//	else
+//		goto Y ;
+
+	return 0 ;
+}
+
